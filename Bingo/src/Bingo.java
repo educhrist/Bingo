@@ -5,7 +5,7 @@ public class Bingo {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Hello Wagner, LOL!");
+		System.out.println("Hell Eclipse!");
 	}
 
 }
