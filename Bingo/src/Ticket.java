@@ -41,4 +41,12 @@ public class Ticket {
 	public int randomNumber(int min, int max ){
 		return new Random().nextInt(max)+min;
 	}
+
+
+
+	
+	
+	
 }
+
+
