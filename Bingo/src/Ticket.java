@@ -38,7 +38,7 @@ public class Ticket {
 		return map;
 	}
 
-	public int randomNumber(int min, int max ){
+	public static int randomNumber(int min, int max ){
 		return new Random().nextInt(max)+min;
 	}
 
