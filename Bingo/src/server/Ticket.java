@@ -1,3 +1,4 @@
+package server;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -5,7 +6,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
 
-/*
+/**
  * @author Lucas Roncato
  * */
 public class Ticket {

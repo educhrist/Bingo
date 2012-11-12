@@ -1,6 +1,7 @@
+package server;
 import java.util.Collections;
 
-/*
+/**
  * @author Eduardo Christ
  */
 
@@ -28,7 +29,7 @@ public class Verifica {
 
 	public static boolean verificaColuna(String coluna, Sorteio sorteio,
 			Ticket sorteados) {
-
+		coluna = coluna.toLowerCase();
 		int contem = 0;
 		double coluna2 = 0.0;
 		if (coluna != null) {
