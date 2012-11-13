@@ -79,9 +79,6 @@ public class Bingo {
            try {
                Socket socket = serverSocket.accept();
                clients++;
-               if((clients == minClients) && !(sorteio.isAlive()) && !(sorteio.isInterrupted())){
-            	   sorteio.run();
-               }
                ClientInfo clientInfo = new ClientInfo();
                clientInfo.mSocket = socket;
                ClientListener clientListener =
@@ -93,6 +90,9 @@ public class Bingo {
                clientListener.start();
                clientSender.start();
                serverDispatcher.addClient(clientInfo);
+               if((clients == minClients) && !(sorteio.isAlive()) && !(sorteio.isInterrupted())){
+            	   sorteio.start();
+               }
            } catch (IOException ioe) {
                ioe.printStackTrace();
            }

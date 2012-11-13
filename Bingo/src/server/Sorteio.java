@@ -3,6 +3,7 @@ package server;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * 
  * @author Eduardo Christ
@@ -48,15 +49,16 @@ public class Sorteio extends Thread {
 
 	public void run() {
 		try {
-			sleep(5000);
-			String numero = String.valueOf(sorteia());
-			if(numero.equals("-1")){
-				interrupt();
-			}else{
-				mServerDispatcher.dispatchMessage(numero);
-				System.out.println(numero);
+			while (!isInterrupted()) {
+				Thread.sleep(500);
+				String numero = String.valueOf(sorteia());
+				if (numero.equals("-1")) {
+					interrupt();
+				} else {
+					mServerDispatcher.dispatchMessage(numero);
+					System.out.println(numero);
+				}
 			}
-			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

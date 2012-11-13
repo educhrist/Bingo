@@ -27,7 +27,13 @@ public class ClientSender extends Thread
         mServerDispatcher = aServerDispatcher;
         Socket socket = aClientInfo.mSocket;
         mOut = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+        sendTicket(mClientInfo);
     }
+    
+    public void sendTicket(ClientInfo clientInfo) {
+		Ticket ticket = clientInfo.ticket;
+		sendMessage(ticket.getList().toString());
+	}
  
     /**
      * Adds given message to the message queue and notifies this thread

@@ -28,7 +28,7 @@ public class Verifica {
 	}
 
 	public static boolean verificaColuna(String coluna, Sorteio sorteio,
-			Ticket sorteados) {
+			Ticket ticket) {
 		coluna = coluna.toLowerCase();
 		int contem = 0;
 		double coluna2 = 0.0;
@@ -49,7 +49,7 @@ public class Verifica {
 		for (int i = 0; i < 4; i++) {
 			coluna2 += i / 10;
 //			String coluna3 = Double.toString(coluna2);
-			if (sorteio.getLista().contains(sorteados.getMap().get(coluna2))) {
+			if (sorteio.getLista().contains(ticket.getMap().get(coluna2))) {
 				contem++;
 			}
 

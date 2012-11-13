@@ -12,6 +12,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,25 +21,18 @@ import javax.swing.JPanel;
 /*
  * @author Wagner Dias
  */
-public class JTestingPanel extends JPanel {
+public class BingoLaw extends JPanel {
 
 	private ArrayList<JButton> botoes;
 	public static final String SERVER_HOSTNAME = "localhost";
     public static final int SERVER_PORT = 2002;
     static JLabel label = null;
     static Sender sender = null;
-    
+    static List<Integer> number = null;
+
 	public static void main(String[] args) {
 		
-		//Swing
-		
-		
-				JTestingPanel gst = new JTestingPanel();
-				JFrame f = new JFrame("Bingo Law");
-				f.getContentPane().add(gst);
-				f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				f.pack();
-				f.setVisible(true);
+
 		
 		//Sockets
 		BufferedReader in = null;
@@ -68,7 +62,26 @@ public class JTestingPanel extends JPanel {
             String message;
            while ((message=in.readLine()) != null) {
 //               System.out.println(message);
-        	   label.setText(message);
+        	   if(message.startsWith("[")){
+         		   System.out.println(message);
+         		   number = new ArrayList<Integer>();
+         		   message = message.substring(1, message.length()-1);
+         		   String[] numbers = message.split(", ");
+         		   System.out.println(numbers[0]);
+         		   for(String s : numbers) {
+         			   number.add(Integer.parseInt(s));
+         			}
+         		   System.out.println(number);
+         			//Swing
+	   				BingoLaw gst = new BingoLaw();
+	   				JFrame f = new JFrame("Bingo Law");
+	   				f.getContentPane().add(gst);
+	   				f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	   				f.pack();
+	   				f.setVisible(true);
+        	   }else{
+        		   label.setText(message);
+        	   }
            }
         } catch (IOException ioe) {
            System.err.println("Connection to server broken.");
@@ -78,7 +91,7 @@ public class JTestingPanel extends JPanel {
 
 	private static final long serialVersionUID = 4221317269750527161L;
 
-	public JTestingPanel() {
+	public BingoLaw() {
 		
 		botoes = new ArrayList<JButton>(30);
 		setLayout(new GridLayout(7, 5));
@@ -110,7 +123,8 @@ public class JTestingPanel extends JPanel {
 				//button.setEnabled(false);
 			}
 
-			JButton button = new JButton("" + i);
+
+			JButton button = new JButton(""+number.get(i-5));
 			button.setBackground(Color.white);
 			add(button);
 			botoes.add(button);

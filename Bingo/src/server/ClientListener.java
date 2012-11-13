@@ -24,7 +24,10 @@ public class ClientListener extends Thread
         mSorteio = aSorteio;
         Socket socket = aClientInfo.mSocket;
         mIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        
     }
+    
+   
     
 /**
  * Verify if the client completed a column, the entire ticket, or nothing.
@@ -40,12 +43,13 @@ public class ClientListener extends Thread
 			}
 		}else if(message.contains("coluna")){
 			if(Verifica.verificaColuna(message, mSorteio, ticket)){
-				//TODO Alguem completou uma coluna, o que fazer?
+				mServerDispatcher.dispatchMessage("Coluna "+ message.charAt(7) + " foi completada.");
 			}else{
 			}
 		}
 		
 	}
+
  
     /**
      * Until interrupted, reads messages from the client socket, forwards them
@@ -58,6 +62,7 @@ public class ClientListener extends Thread
                String message = mIn.readLine();
                if (message == null)
                    break;
+               System.out.println(message);
                verifyClaim(message);
            }
         } catch (IOException ioex) {

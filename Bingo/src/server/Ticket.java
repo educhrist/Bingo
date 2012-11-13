@@ -14,12 +14,13 @@ public class Ticket {
 	
 	public Ticket(){
 		int test;
-		while(list.size() < 20){
+		while(list.size() < 25){
 			if(!(list.contains((test = randomNumber(1, 99))))){
 				list.add(test);
 			}
 		}
 		Collections.sort(list);
+		System.out.println(list);
 	}
 	
 	
@@ -31,9 +32,11 @@ public class Ticket {
 		Map<Double, Integer> map = new TreeMap<Double, Integer>();
 		int count=0;
 		for (double i = 0; i < 5; i++) {
-			for (double j = 0; j < 4; j++) {
-				map.put(i + (j/10), list.get(count));
-				count++;
+			for (double j = 0; j < 5; j++) {
+				if(count < 25){
+					map.put(i + (j/10), list.get(count));
+					count++;
+				}
 			}
 		}
 		return map;
