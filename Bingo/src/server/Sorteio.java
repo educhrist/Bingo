@@ -1,6 +1,5 @@
 package server;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class Sorteio extends Thread {
 		int test = -1;
 		while (true) {
 			if (lista.size() == 99) {
-				System.out.println("Malditos noobas");
+				System.out.println("Fim do sorteio");
 				break;
 			}
 
