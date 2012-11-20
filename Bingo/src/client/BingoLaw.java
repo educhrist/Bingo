@@ -24,7 +24,7 @@ import javax.swing.JPanel;
 public class BingoLaw extends JPanel {
 
 	private ArrayList<JButton> botoes;
-	public static final String SERVER_HOSTNAME = "localhost";
+	public static final String SERVER_HOSTNAME = "192.168.4.85";
     public static final int SERVER_PORT = 2002;
     static JLabel label = null;
     static Sender sender = null;

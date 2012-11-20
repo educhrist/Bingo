@@ -50,7 +50,7 @@ public class Sorteio extends Thread {
 	public void run() {
 		try {
 			while (!isInterrupted()) {
-				Thread.sleep(500);
+				Thread.sleep(5000);
 				String numero = String.valueOf(sorteia());
 				if (numero.equals("-1")) {
 					interrupt();
